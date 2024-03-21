@@ -8,10 +8,10 @@ import {MatInputModule} from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-<<<<<<< HEAD
-=======
+
+
 import { ContatoService } from './contato.service';
->>>>>>> homolog
+
 import { ContatoComponent } from './contato/contato.component';
 
 

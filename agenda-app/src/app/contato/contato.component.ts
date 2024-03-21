@@ -7,11 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContatoComponent implements OnInit {
 
-<<<<<<< HEAD
-=======
-  nome: string = 'oi'
 
->>>>>>> homolog
   constructor() { }
 
   ngOnInit(): void {
