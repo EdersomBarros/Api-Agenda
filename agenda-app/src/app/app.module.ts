@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ContatoComponent } from './contato/contato.component';
 import { ContatoService } from './contato.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -32,6 +33,7 @@ import { ContatoService } from './contato.service';
     MatToolbarModule,
     MatInputModule,
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule
   ],
   providers: [ContatoService],
