@@ -5,6 +5,11 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { MatInputModule } from '@angular/material/input';
+import {MatTabsModule} from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule  } from '@angular/material/card';
+
 
 
 
@@ -34,6 +39,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatTabsModule,
+    MatIconModule,
+    MatCardModule,
     BrowserAnimationsModule
   ],
   providers: [ContatoService],
