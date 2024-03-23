@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ContatoComponent implements OnInit {
 
+
   formulario: FormGroup;
   contatos: Contato[] = [];
   colunas = ['id', 'nome', 'email','favorito'];
@@ -18,6 +19,7 @@ export class ContatoComponent implements OnInit {
 
 
   constructor(private service: ContatoService, private fb: FormBuilder) {}
+
 
 
 
