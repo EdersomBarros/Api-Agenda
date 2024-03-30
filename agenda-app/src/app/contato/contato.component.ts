@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ContatoDetalheComponent } from '../contato-detalhe/contato-detalhe.component';
 import { PageEvent } from '@angular/material/paginator';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-contato',
@@ -21,16 +21,15 @@ export class ContatoComponent implements OnInit {
   totalElementos = 0;
   pagina = 0;
   tamanho = 5;
-  pageSizeOptions : number[] = [5, 10, 50];
+  pageSizeOptions: number[] = [5, 10, 50];
 
 
-
-  constructor(private service: ContatoService,
-              private fb: FormBuilder,
-              private dialog: MatDialog) {}
-
-
-
+  constructor(
+    private service: ContatoService,
+    private fb: FormBuilder,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {}
 
 
   ngOnInit(): void {
@@ -62,32 +61,33 @@ export class ContatoComponent implements OnInit {
     const formValues = this.formulario.value;
     const contato: Contato = new Contato(formValues.nome, formValues.email);
     this.service.save(contato).subscribe((resposta) => {
-     let lista: Contato[] = [... this.contatos, resposta ]
-     this.contatos = lista;
+      this.listarContatos();
+      this.snackBar.open('O Contato foi adicionado', 'Sucesso!!', {
+        duration: 2000,
+      });
+      this.formulario.reset();
     });
   }
-  uploadFoto(event, contato){
+  uploadFoto(event, contato) {
     const files = event.target.files;
     if (files) {
       const foto = files[0];
       const formData: FormData = new FormData();
-      formData.append("foto", foto);
+      formData.append('foto', foto);
       this.service
-                .upload(contato, formData)
-                .subscribe(response => this.listarContatos());
+        .upload(contato, formData)
+        .subscribe((response) => this.listarContatos());
     }
-
   }
-  visualizarContato(contato: Contato){
-      this.dialog.open(ContatoDetalheComponent, {
-        width: '400px',
-        height: '450px',
-        data: contato
-      });
+  visualizarContato(contato: Contato) {
+    this.dialog.open(ContatoDetalheComponent, {
+      width: '400px',
+      height: '450px',
+      data: contato,
+    });
   }
-  paginar(event: PageEvent){
+  paginar(event: PageEvent) {
     this.pagina = event.pageIndex;
     this.listarContatos(this.pagina, this.tamanho);
-
   }
 }
