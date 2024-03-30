@@ -74,9 +74,9 @@
         <mat-form-field class="full-width">
           <mat-label>Nome:</mat-label>
           <input formControlName="nome" matInput placeholder="Digite seu nome..." type="text">
-        </mat-form-field>
 
-        <div *ngIf="formulario.controls.nome.errors">
+        </mat-form-field>
+        <div *ngIf="formulario.controls.nome.errors && !formulario.controls.nome.pristine">
           <div *ngIf="formulario.controls.nome.errors.required">
             Campo nome é obrigatório
           </div>
